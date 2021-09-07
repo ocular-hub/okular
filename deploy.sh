@@ -1,9 +1,11 @@
 docker build -t ocular2020/multi-client:latest -t ocular2020/multi-client:$SHA -f ./client/Dockerfile ./client
 docker build -t ocular2020/multi-server:latest -t ocular2020/multi-server:$SHA -f ./server/Dockerfile ./server
-docker built -t ocular2020/multi-worker:latest -t ocular2020/multi-worker:$SHA -f ./worker/Dockerfile ./worker
+docker build -t ocular2020/multi-worker:latest -t ocular2020/multi-worker:$SHA -f ./worker/Dockerfile ./worker
+
 docker push ocular2020/multi-client:latest
 docker push ocular2020/multi-server:latest
 docker push ocular2020/multi-worker:latest
+
 docker push ocular2020/multi-client:$SHA
 docker push ocular2020/multi-server:$SHA
 docker push ocular2020/multi-worker:$SHA
