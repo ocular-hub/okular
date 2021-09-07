@@ -35,6 +35,11 @@ const redisPublisher = redisClient.duplicate();
 
 // Express route handlers
 
+app.use(bodyParser.urlencoded({
+   extended: false
+}));
+
+
 app.get('/', (req, res) => {
   res.send('Hi');
 });
