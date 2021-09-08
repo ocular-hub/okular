@@ -1,35 +1,43 @@
 apiVersion: networking.k8s.io/v1
-# UPDATE API
 kind: Ingress
 metadata:
   name: ingress-service
   annotations:
     kubernetes.io/ingress.class: 'nginx'
-    nginx.ingress.kubernetes.io/use-regex: 'true'
-    # ADD ANNOTATION
     nginx.ingress.kubernetes.io/rewrite-target: /$1
-    # UPDATE ANNOTATION
+    certmanager.k8s.io/cluster-issuer: 'letsencrypt-prod'
+    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
+    # UPDATE THIS LINE ABOVE
 spec:
+  tls: 
+    - hosts:
+        - okular.us
+        - www.okular.us
+      secretName: okular-us-tls
   rules:
-    - http:
+    - host: okular.us
+      http:
         paths:
           - path: /?(.*)
-            # UPDATE PATH
-            pathType: Prefix
-            # ADD PATHTYPE
+            # UPDATE THIS LINE ABOVE
             backend:
-              service:
-                # UPDATE SERVICE FIELDS
-                name: client-cluster-ip-service
-                port:
-                  number: 3000
+              serviceName: client-cluster-ip-service
+              servicePort: 3000
           - path: /api/?(.*)
-            # UPDATE PATH
-            pathType: Prefix
-            # ADD PATHTYPE
+            # UPDATE THIS LINE ABOVE
             backend:
-              service:
-                # UPDATE SERVICE FIELDS
-                name: server-cluster-ip-service
-                port:
-                  number: 5000
+              serviceName: server-cluster-ip-service
+              servicePort: 5000
+    - host: www.okular.us
+      http:
+        paths:
+          - path: /?(.*)
+            # UPDATE THIS LINE ABOVE
+            backend:
+              serviceName: client-cluster-ip-service
+              servicePort: 3000
+          - path: /api/?(.*)
+            # UPDATE THIS LINE ABOVE
+            backend:
+              serviceName: server-cluster-ip-service
+              servicePort: 5000
