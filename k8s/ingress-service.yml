@@ -20,24 +20,34 @@ spec:
         paths:
           - path: /?(.*)
             # UPDATE THIS LINE ABOVE
+            pathType: Prefix
             backend:
-              serviceName: client-cluster-ip-service
-              servicePort: 3000
+              service:
+                name: client-cluster-ip-service
+                port: 
+                  number: 3000
           - path: /api/?(.*)
             # UPDATE THIS LINE ABOVE
             backend:
-              serviceName: server-cluster-ip-service
-              servicePort: 5000
+              service:
+                name: server-cluster-ip-service
+                port: 
+                  number: 5000
     - host: www.okular.us
       http:
         paths:
           - path: /?(.*)
             # UPDATE THIS LINE ABOVE
+            pathType: Prefix
             backend:
-              serviceName: client-cluster-ip-service
-              servicePort: 3000
+              service:
+                name: client-cluster-ip-service
+                port: 
+                  number: 3000
           - path: /api/?(.*)
             # UPDATE THIS LINE ABOVE
             backend:
-              serviceName: server-cluster-ip-service
-              servicePort: 5000
+              service:
+                name: server-cluster-ip-service
+                port: 
+                  number: 5000
