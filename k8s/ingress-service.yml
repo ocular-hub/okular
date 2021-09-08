@@ -28,6 +28,7 @@ spec:
                   number: 3000
           - path: /api/?(.*)
             # UPDATE THIS LINE ABOVE
+            pathType: Prefix
             backend:
               service:
                 name: server-cluster-ip-service
@@ -46,6 +47,7 @@ spec:
                   number: 3000
           - path: /api/?(.*)
             # UPDATE THIS LINE ABOVE
+            pathType: Prefix
             backend:
               service:
                 name: server-cluster-ip-service
