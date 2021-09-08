@@ -13,7 +13,7 @@ spec:
     - hosts:
         - okular.us
         - www.okular.us
-      secretName: okular-us-tls
+      secretName: okular-us
   rules:
     - host: okular.us
       http:
