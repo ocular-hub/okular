@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="OpenLiberty Java EE 8 Server">
+
+    <featureManager>
+        <feature>javaee-8.0</feature>
+    </featureManager>
+
+    <httpEndpoint id="defaultHttpEndpoint" host="*" httpPort="9080" httpsPort="9443"/>
+
+    <keyStore id="defaultKeyStore" password="Liberty"/>
+
+    <dataSource id="DefaultDataSource" 
+            jndiName="jdbc/sample" 
+            jdbcDriverRef="postgresql-driver"
+            type="javax.sql.ConnectionPoolDataSource" 
+            transactional="true">
+        <properties serverName="${env.PGHOST}"
+            portNumber="${env.PGPORT}"
+            databaseName="${env.PGDATABASE}"
+            user="${env.PGUSER}"
+            password="${env.PGPASSWORD}"/>
+    </dataSource>
+
+    <jdbcDriver id="postgresql-driver" javax.sql.XADataSource="org.postgresql.xa.PGXADataSource"
+                javax.sql.ConnectionPoolDataSource="org.postgresql.ds.PGConnectionPoolDataSource"
+                libraryRef="postgresql-library"/>
+
+    <library id="postgresql-library">
+        <fileset id="PostgreSQLFileset" dir="/opt/wlp/lib" includes="postgresql-42.2.23.jar"/>
+    </library>
+
+</server>
