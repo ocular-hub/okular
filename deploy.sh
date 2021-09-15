@@ -16,6 +16,7 @@ docker push ocular2020/postgres-ddl:latest
 docker push ocular2020/openliberty-openjdk11:latest
 docker push ocular2020/jserv:latest
 
+
 docker push ocular2020/multi-client:$SHA
 docker push ocular2020/multi-server:$SHA
 docker push ocular2020/multi-worker:$SHA
