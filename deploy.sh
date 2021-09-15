@@ -31,7 +31,7 @@ kubectl set image deployments/server-deployment server=ocular2020/multi-server:$
 kubectl set image deployments/client-deployment client=ocular2020/multi-client:$SHA
 kubectl set image deployments/worker-deployment worker=ocular2020/multi-worker:$SHA
 kubectl set image deployments/postgres-deployment postgres=ocular2020/postgres-ddl:$SHA
-kubectl set image deployments/jserv-deployment jserv=ocular2020/openliberty-openjdk11:$SHA
+# kubectl set image deployments/jserv-deployment jserv=ocular2020/openliberty-openjdk11:$SHA
 kubectl set image deployments/jserv-deployment jserv=ocular2020/jserv:$SHA
 
 
