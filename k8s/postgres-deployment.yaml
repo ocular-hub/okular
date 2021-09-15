@@ -27,8 +27,8 @@ spec:
               subPath: postgres
           env:
             - name: POSTGRES_DB
-              value: okulardb
-            - name: PGUSER
+              value: postgres
+            - name: POSTGRES_USER
               value: postgres
             - name: POSTGRES_PASSWORD
               valueFrom:
