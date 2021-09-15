@@ -18,7 +18,7 @@ spec:
             claimName: database-persistent-volume-claim
       containers:
         - name: postgres
-          image: postgres
+          image: ocular2020/postgres-ddl
           ports:
             - containerPort: 5432
           volumeMounts:
@@ -26,6 +26,10 @@ spec:
               mountPath: /var/lib/postgresql/data
               subPath: postgres
           env:
+            - name: POSTGRES_DB
+              value: okulardb
+            - name: PGUSER
+              value: postgres
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:

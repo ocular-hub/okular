@@ -34,6 +34,14 @@ spec:
                 name: server-cluster-ip-service
                 port: 
                   number: 5000
+          - path: /japi/?(.*)
+            # UPDATE THIS LINE ABOVE
+            pathType: Prefix
+            backend:
+              service:
+                name: jserv-cluster-ip-service
+                port: 
+                  number: 9080
     - host: www.okular.us
       http:
         paths:
@@ -53,3 +61,11 @@ spec:
                 name: server-cluster-ip-service
                 port: 
                   number: 5000
+          - path: /japi/?(.*)
+            # UPDATE THIS LINE ABOVE
+            pathType: Prefix
+            backend:
+              service:
+                name: jserv-cluster-ip-service
+                port: 
+                  number: 9080

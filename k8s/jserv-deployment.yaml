@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: server-deployment
+  name: jserv-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      component: server
+      component: jserv
   template:
     metadata:
       labels:
-        component: server
+        component: jserv
     spec:
       containers:
-        - name: server
-          image: ocular2020/multi-server
+        - name: jserv
+          image: ocular2020/jserv
           ports:
-            - containerPort: 5000
+            - containerPort: 9080
           env:
             - name: REDIS_HOST
               value: redis-cluster-ip-service
