@@ -2,7 +2,7 @@ docker build -t ocular2020/multi-client:latest -t ocular2020/multi-client:$SHA -
 docker build -t ocular2020/multi-server:latest -t ocular2020/multi-server:$SHA -f ./server/Dockerfile ./server
 docker build -t ocular2020/multi-worker:latest -t ocular2020/multi-worker:$SHA -f ./worker/Dockerfile ./worker
 
-docker build -t ocular2020/postgres-ddl:latest -t ocular2020/postgres-ddl:$SHA -f ./pgdb/Dockerfile ./pdgb
+docker build -t ocular2020/postgres-ddl:latest -t ocular2020/postgres-ddl:$SHA -f ./pgdb/Dockerfile ./pgdb
 docker build -t ocular2020/openliberty-openjdk11:latest -t ocular2020/openliberty-openjdk11:$SHA -f ./jserv/openliberty/Dockerfile ./jserv/openliberty
 cd ./jserv
 mvn clean package
