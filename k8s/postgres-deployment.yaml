@@ -27,7 +27,7 @@ spec:
               subPath: okulardb
           env:
             - name: POSTGRES_DATABASE
-              value: okulardb
+              value: postgres
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
