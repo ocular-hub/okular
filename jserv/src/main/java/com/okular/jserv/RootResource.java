@@ -19,11 +19,16 @@ public class RootResource {
     @Inject
     EntityBuilder entityBuilder;
 
+    //@GET
+    //public Response getIndex() {
+        //return Response.ok(entityBuilder.buildIndex(this.uriInfo))
+                //.header("Greeting", "Hello world")
+                //.build();
+    //}
+
     @GET
-    public Response getIndex() {
-        return Response.ok(entityBuilder.buildIndex(this.uriInfo))
-                .header("Greeting", "Hello world")
-                .build();
+    public String hello() {
+        return "Coffee";
     }
 
 }
