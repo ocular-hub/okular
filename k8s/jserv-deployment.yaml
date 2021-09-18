@@ -15,24 +15,12 @@ spec:
       containers:
         - name: jserv
           image: ocular2020/jserv
-          livenessProbe:
-            httpGet:
-              port: 9080
-              path: /
+          ports:
+            - containerPort: 9080
           readinessProbe:
             httpGet:
               port: 9080
-              path: /jserv/resources/health
-            initialDelaySeconds: 60
-            periodSeconds: 5
-            failureThresholdId: 2
-          lifecycle:
-            preStop:
-              exec:
-                command: ["/bin/bash", "-c", "curl www.okular.us/japi/jserv/resources/health", -XDELETE && sleep 25"]
-
-          ports:
-            - containerPort: 9080
+              path: /
           env:
             - name: REDIS_HOST
               value: redis-cluster-ip-service
@@ -51,6 +39,11 @@ spec:
                 secretKeyRef:
                   name: pgpassword 
                   key: PGPASSWORD
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 0
           
 
 
