@@ -28,7 +28,7 @@ public class RootResource {
 
     @GET
     public String hello() {
-        return "Coffee, Please";
+        return "Can I get a refill, Please?";
     }
 
 }
